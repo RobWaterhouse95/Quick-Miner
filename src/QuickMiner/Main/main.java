@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class main extends JavaPlugin implements Listener{
@@ -24,6 +25,17 @@ public class main extends JavaPlugin implements Listener{
 		getLogger().info("Quick Miner has been disabled");
 		
 	}
+	
+	
+	@EventHandler
+	public void msgOnLogin(PlayerJoinEvent e){
+		
+		e.getPlayer().sendMessage("Type /QuickMiner for help");
+		
+		
+		
+	}
+	
 	
 	@EventHandler
 	public void getBlockName(PlayerInteractEvent e){
