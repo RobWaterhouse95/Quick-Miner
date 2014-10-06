@@ -1,3 +1,7 @@
 name: QuickMiner
 version: 0.1
 main: QuickMiner.Main.main
+commands:
+   QuickMiner:
+      description: Shows help on how to use the plugin
+      usage: /<command>

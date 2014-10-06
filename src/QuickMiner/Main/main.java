@@ -3,6 +3,8 @@ package QuickMiner.Main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,18 +30,27 @@ public class main extends JavaPlugin implements Listener{
 	
 	
 	@EventHandler
-	public void msgOnLogin(PlayerJoinEvent e){
-		
-		e.getPlayer().sendMessage("Type /QuickMiner for help");
-		
-		
-		
+	public void msgOnLogin(PlayerJoinEvent e){		
+		e.getPlayer().sendMessage("Type /QuickMiner for help");		
 	}
 	
 	
+	@Override
+	public boolean onCommand(CommandSender csender, Command cmd, String label, String[] args) {
+			Bukkit.getServer().broadcastMessage("command");
+		if (cmd.getName().equalsIgnoreCase("QuickMiner")) { // If the player typed /basic then do the following...
+			Player sender = (Player) csender;
+			sender.sendMessage("To use QuickMiner, Right click a block with a Golden Hoe");
+			sender.sendMessage("Some surrounding blocks around the one you chosen will disappear");
+			sender.sendMessage("Only the blocks that are the same as the chosen block will be mined");
+			return true;
+		} //If this has happened the function will return true. 
+	        // If this hasn't happened the value of false will be returned.
+		return false; 
+	}
+	
 	@EventHandler
-	public void getBlockName(PlayerInteractEvent e){
-		
+	public void getBlockName(PlayerInteractEvent e){		
 		if(e.getAction().equals(Action.RIGHT_CLICK_BLOCK)){
 			int x = e.getClickedBlock().getX();
 			int y = e.getClickedBlock().getY();
